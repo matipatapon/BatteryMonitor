@@ -10,7 +10,7 @@ class BatteryInfoGetter:
         batteryFolders = self._getListOfBatteries()
         assert len(batteryFolders) == 1
 
-        f = open(batteryFolder[0] + "/capacity", "r")
+        f = open(batteryFolders[0] + "/capacity", "r")
         return int(f.read())
 
     def _getListOfBatteries(self):
