@@ -14,7 +14,7 @@ class BatteryInfoGetter:
         return int(f.read())
 
     def _getListOfBatteries(self):
-        return [BATTERY_PARENT_FOLDER + batteryFolder for batteryFolder in listdir(BATTERY_PARENT_FOLDER) if not isfile(join(BATTERY_PARENT_FOLDER, batteryFolder))]
+        return [BATTERY_PARENT_FOLDER + batteryFolder for batteryFolder in listdir(BATTERY_PARENT_FOLDER) if not isfile(join(BATTERY_PARENT_FOLDER, batteryFolder)) and "BAT" in batteryFolder]
 
     
 def BatteryInfoGetterTests():
