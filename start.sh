@@ -25,6 +25,11 @@ python3 -m venv env
 
 echo "Starting tests ..."
 ./env/bin/python3 src/tests.py
+if [ $? != 0 ]
+then
+	echo "Tests failed !!! Aborting ..."
+	exit 1
+fi
 
 echo "Started ..."
 ./env/bin/python3 src/main.py
