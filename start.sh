@@ -22,6 +22,7 @@ fi
 
 python3 -m venv env
 ./env/bin/pip install gtts --disable-pip-version-check -q
+./env/bin/pip install pydub --disable-pip-version-check -q
 
 echo "Starting tests ..."
 ./env/bin/python3 src/tests.py
