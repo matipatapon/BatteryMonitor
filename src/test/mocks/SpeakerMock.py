@@ -17,7 +17,7 @@ class SpeakerMock:
         return self._lastReceivedText
 
 
-def SpeakerMockTests():
+def SpeakerMockUTs():
     def SpeakerMockShould_ReturnDefaultCallCount():
         sut = SpeakerMock()
 

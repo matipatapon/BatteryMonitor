@@ -1,4 +1,4 @@
 def runTest(testFunction):
-    print(f" TEST {testFunction.__name__}", end="")
+    print(f"\nTEST {testFunction.__name__}")
     testFunction()
-    print(" - PASSED")
+    print("PASSED")

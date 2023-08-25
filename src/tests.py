@@ -1,19 +1,32 @@
+import sys
 from test.runTest import runTest
-from test.mocks.BatteryInfoGetterMock import BatteryInfoGetterMockTests
-from test.mocks.SpeakerMock import SpeakerMockTests
-from test.mocks.TimeManagerMock import TimeManagerMockTests
-from objects.BatteryMonitor import BatteryMonitorTests
-from objects.BatteryInfoGetter import BatteryInfoGetterTests
-from main import MainTest
+from test.mocks.BatteryInfoGetterMock import BatteryInfoGetterMockUTs
+from test.mocks.SpeakerMock import SpeakerMockUTs
+from test.mocks.TimeManagerMock import TimeManagerMockUTs
+from objects.BatteryMonitor import BatteryMonitorUTs
+from objects.BatteryInfoGetter import BatteryInfoGetterITs
+from main import MainITs
 
-TESTS_TO_RUN = [
-    BatteryInfoGetterMockTests,
-    SpeakerMockTests,
-    TimeManagerMockTests,
-    BatteryMonitorTests,
-    BatteryInfoGetterTests,
-    MainTest]
+UT_TO_RUN = [
+    BatteryInfoGetterMockUTs,
+    SpeakerMockUTs,
+    TimeManagerMockUTs,
+    BatteryMonitorUTs
+]
 
-for test in TESTS_TO_RUN:
-    print(f"STARTING - {test.__name__}")
-    test()
+IT_TO_RUN = [
+    MainITs,
+    BatteryInfoGetterITs
+]
+
+def runTests(tests):
+    for test in tests:
+        print(f"STARTING - {test.__name__}")
+        test()
+
+
+if "ut" in sys.argv:
+    runTests(UT_TO_RUN)
+
+if "it" in sys.argv:
+    runTests(IT_TO_RUN)

@@ -16,7 +16,7 @@ class BatteryInfoGetterMock:
     def getBatteryLevelCallCount(self):
         return self._batteryLevelCallCount
 
-def BatteryInfoGetterMockTests():
+def BatteryInfoGetterMockUTs():
     def BatteryInfoGetterMockShould_SetBatteryLevelInConstructor():
         sut = BatteryInfoGetterMock(1)
 

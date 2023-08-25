@@ -17,7 +17,7 @@ class TimeManagerMock:
         return self._lastReceivedTime
 
 
-def TimeManagerMockTests():
+def TimeManagerMockUTs():
     def TimeManagerMockShould_ReturnDefaultCallCount():
         sut = TimeManagerMock()
 

@@ -5,7 +5,7 @@ from objects.TimeManager import TimeManager
 from test.runTest import runTest
 
 
-def MainTest():
+def MainITs():
     def RunBatteryMonitorStage():
         batteryInfoGetter = BatteryInfoGetter()
         speaker = Speaker()

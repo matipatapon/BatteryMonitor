@@ -1,3 +1,4 @@
+from objects.Logger import Logger
 from constants import BATTERY_LEVEL_STEP, BATTERY_LEVEL_CHECK_INTERVAL
 from test.runTest import runTest
 from test.mocks.BatteryInfoGetterMock import BatteryInfoGetterMock
@@ -17,10 +18,12 @@ class BatteryMonitor:
         self._timeManager = timeManager
         self._previousBatteryLevel = 1000
         self._batteryLevelChange = 0
+        self._logger = Logger("BatteryMonitor")
 
     def runStage(self, time = BATTERY_LEVEL_CHECK_INTERVAL):
         currentBatteryLevel = self._batteryInfoGetter.getBatteryLevel()
         self._batteryLevelChange += currentBatteryLevel - self._previousBatteryLevel
+        self._logger.log(f"Current battery level is {currentBatteryLevel} and changed by {self._batteryLevelChange}")
         if self._batteryLevelChange <= -BATTERY_LEVEL_STEP:
             self._batteryLevelChange = 0
             self._speaker.speakText(f"{currentBatteryLevel}% battery left")
@@ -35,7 +38,7 @@ class BatteryMonitor:
             self.runStage()
 
 
-def BatteryMonitorTests():
+def BatteryMonitorUTs():
     EntryBatteryLevel = 50
 
     def BatteryMonitorShould_GetBatteryLevelSpeakItThenWait():
