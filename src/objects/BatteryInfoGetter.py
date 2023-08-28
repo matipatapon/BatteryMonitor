@@ -10,23 +10,23 @@ class BatteryInfoGetter:
         self._logger = Logger("BatteryInfoGetter")
 
     def getBatteryLevel(self):
-        batteryFolders = self._getListOfBatteries()
+        return self._readBatteryLevelFromFile(self._getBatteryFolder() + "/capacity")
+
+    def _getBatteryFolder(self):
+        batteryFolders = [BATTERY_PARENT_FOLDER + batteryFolder for batteryFolder in listdir(BATTERY_PARENT_FOLDER) if not isfile(join(BATTERY_PARENT_FOLDER, batteryFolder)) and "BAT" in batteryFolder]
         assert len(batteryFolders) == 1
-        
-        capacityFolder = batteryFolders[0] + "/capacity"
-        f = open(capacityFolder, "r")
+        return batteryFolders[0]
+
+    def _readBatteryLevelFromFile(self, path):
+        f = open(path, "r")
         capacity = int(f.read())
-        self._logger.log(f"Capacity is {capacity} readed from {capacityFolder}")
+        f.close()
+        self._logger.log(f"Capacity is {capacity} readed from {path}")
         return capacity
 
-    def _getListOfBatteries(self):
-        return [BATTERY_PARENT_FOLDER + batteryFolder for batteryFolder in listdir(BATTERY_PARENT_FOLDER) if not isfile(join(BATTERY_PARENT_FOLDER, batteryFolder)) and "BAT" in batteryFolder]
 
-    
 def BatteryInfoGetterITs():
     def BatteryInfoShould_ReadBatteryLevelFromFile():
         sut = BatteryInfoGetter()
-        
         batteryLevel = sut.getBatteryLevel()
-        
         assert batteryLevel >= 0 and batteryLevel <= 100
