@@ -21,7 +21,8 @@ then
 fi
 
 python3 -m venv env
-./env/bin/pip install gtts --disable-pip-version-check -q
+./env/bin/pip install pyttsx3 --disable-pip-version-check -q
+./env/bin/pip install pyaudio --disable-pip-version-check -q
 ./env/bin/pip install pydub --disable-pip-version-check -q
 
 if [ $# == 0 ] ; then
