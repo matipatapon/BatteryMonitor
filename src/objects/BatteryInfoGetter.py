@@ -23,10 +23,3 @@ class BatteryInfoGetter:
         f.close()
         self._logger.log(f"Capacity is {capacity} readed from {path}")
         return capacity
-
-
-def BatteryInfoGetterITs():
-    def BatteryInfoShould_ReadBatteryLevelFromFile():
-        sut = BatteryInfoGetter()
-        batteryLevel = sut.getBatteryLevel()
-        assert batteryLevel >= 0 and batteryLevel <= 100

@@ -24,19 +24,16 @@ python3 -m venv env
 ./env/bin/pip install pyttsx3 --disable-pip-version-check -q
 ./env/bin/pip install pyaudio --disable-pip-version-check -q
 ./env/bin/pip install pydub --disable-pip-version-check -q
+./env/bin/pip install pytest --disable-pip-version-check -q
 
 if [ $# == 0 ] ; then
-	echo "Running unit tests, integration tests and statring app ..."
-	./env/bin/python3 src/tests.py ut it
-	if [ $? != 0 ] ; then
-		echo "TESTS FAILED !!!"
-		exit 1
-	fi
-
 	./env/bin/python3 src/main.py
-
 elif [ $1 == "ut" ] ; then
-	./env/bin/python3 src/tests.py ut
+	./env/bin/pytest -rAs -k test_ut
+elif [ $1 == "it" ] ; then
+	./env/bin/pytest -rAs -k test_it
+elif [ $1 == "all" ] ; then
+	./env/bin/pytest -rAs
 else
 	echo "Unknown arg !!!"
 	exit 1

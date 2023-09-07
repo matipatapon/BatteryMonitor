@@ -1,6 +1,3 @@
-from ..runTest import runTest
-
-
 class TimeManagerMock:
     def __init__(self):
         self._waitCallCount = 0
@@ -15,30 +12,3 @@ class TimeManagerMock:
 
     def getLastReceivedTime(self):
         return self._lastReceivedTime
-
-
-def TimeManagerMockUTs():
-    def TimeManagerMockShould_ReturnDefaultCallCount():
-        sut = TimeManagerMock()
-
-        assert sut.getWaitCallCount() == 0
-
-    runTest(TimeManagerMockShould_ReturnDefaultCallCount)
-
-    def TimeManagerMockShould_ReturnCallCount():
-        sut = TimeManagerMock()
-
-        sut.wait(5)
-        
-        assert sut.getWaitCallCount() == 1
-
-    runTest(TimeManagerMockShould_ReturnCallCount)
-
-    def TimeManagerMockShould_ReturnLastReceivedTime():
-        sut = TimeManagerMock()
-
-        sut.wait(5)
-        
-        assert sut.getLastReceivedTime() == 5
-
-    runTest(TimeManagerMockShould_ReturnLastReceivedTime)
