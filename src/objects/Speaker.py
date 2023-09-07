@@ -6,7 +6,7 @@ class Speaker:
     def __init__(self):
         self._logger = Logger("Speaker")
         self._pyttsx3 = pyttsx3.init()
-        self._pyttsx3.setProperty("rate", 125)
+        self._pyttsx3.setProperty("rate", 100)
         self._pyttsx3.setProperty("volume", 1)
 
     def speakText(self, text):
