@@ -20,18 +20,18 @@ class BatteryMonitor:
         batteryInfoGetter,
         speaker,
         timeManager,
-        batteryLevels
+        batteryLevelsToTriggerNotification
     ):
         self._batteryInfoGetter = batteryInfoGetter
         self._speaker = speaker
         self._timeManager = timeManager
         self._logger = Logger("BatteryMonitor")
-        self._batteryTriggers = [BatteryTrigger(batteryLevel) for batteryLevel in batteryLevels]
+        self._batteryTriggers = [BatteryTrigger(batteryLevel) for batteryLevel in batteryLevelsToTriggerNotification]
 
     def runStage(self, time = BATTERY_LEVEL_CHECK_INTERVAL):
-        batteryLevel = self._batteryInfoGetter.getBatteryLevel()
-        self._sayBatteryLevelOnTrigger(batteryLevel)
-        self._resetBatteryTriggers(batteryLevel)
+        currentBatteryLevel = self._batteryInfoGetter.getBatteryLevel()
+        self._sayBatteryLevelOnTrigger(currentBatteryLevel)
+        self._resetBatteryTriggers(currentBatteryLevel)
         self._timeManager.wait(time)
 
     def _sayBatteryLevelOnTrigger(self, batteryLevel):
