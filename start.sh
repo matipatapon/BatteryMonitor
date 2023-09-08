@@ -1,23 +1,16 @@
 #!/bin/bash
 
 echo """
-SMALL SCRIPT THAT INDICATES BATTERY LEVEL CHANGE AFTER REACHING THE THRESHOLD
+#!# BATTERY MONITOR #!#
 
-MADE BY MATEUSZ PIETKA matipietka@gmail.com
+--> https://github.com/matipatapon <--
 """
-
-mpg123 --version > /dev/null
-if [ $? != 0 ]
-then
-	echo "mpg123 not installed !!!"
-	exit 1	
-fi
 
 python3 --version > /dev/null
 if [ $? != 0 ]
 then
 	echo "python3 not installed !!!"
-	exit 1	
+	exit 1
 fi
 
 python3 -m venv env

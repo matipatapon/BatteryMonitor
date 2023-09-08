@@ -1,5 +1,4 @@
 import pyttsx3
-from constants import COMMUNICATE_FILE
 from objects.Logger import Logger
 
 class Speaker:

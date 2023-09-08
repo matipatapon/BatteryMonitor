@@ -1,5 +1,5 @@
 from objects.Logger import Logger
-from constants import BATTERY_LEVEL_STEP, BATTERY_LEVEL_CHECK_INTERVAL
+from constants import BATTERY_LEVEL_CHECK_INTERVAL
 
 
 class BatteryTrigger:
