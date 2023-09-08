@@ -5,8 +5,9 @@ It says the battery level for certain battery levels.
 Almost all important settings are inside src/constants.py file ( if you think more should be added open an issue :P )
 
 - BATTERY_LEVEL_CHECK_INTERVAL - interval in seconds of checking battery level
-    - default 30 seconds - battery will be checked every 30 seconds
+    - Default 30 seconds - battery will be checked every 30 seconds
 - BATTERY_LEVEL_TRIGGERS - which battery levels should trigger speaker
+  - Default - 20%, 15%, 10%-1%
   - Battery level will be said once it hits given trigger
   - Multiple triggers can be triggered at once ( if triggers are 10 and 9 but battery level will jump from 11% to 8%, battery level will be said once ) 
   - Trigger is reseted when battery level is greater from it
